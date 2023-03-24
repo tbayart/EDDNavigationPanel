@@ -1,0 +1,42 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <LangVersion>10.0</LangVersion>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\LandingPadsCoords.csv" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MahApps.Metro.IconPacks.Material" Version="4.11.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\LandingPadsCoords.csv" />
+    <Resource Include="Resources\LandingPadsCoriolis.png" />
+    <Resource Include="Resources\LandingPadsCraterOutpost.png" />
+    <Resource Include="Resources\LandingPadsCraterPort.png" />
+    <Resource Include="Resources\LandingPadsFleetCarrier.png" />
+    <Resource Include="Resources\LandingPadsOutpost.png" />
+    <EmbeddedResource Include="Resources\PanelIcon.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="EDDDLLInterfaces">
+      <HintPath>..\EDDDLLInterfaces\EDDDLLInterfaces.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="xcopy $(OutDir)*.dll ..\OutputDLL\ /Y" />
+  </Target>
+
+</Project>

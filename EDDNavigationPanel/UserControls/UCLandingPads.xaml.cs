@@ -39,6 +39,7 @@ namespace EDDNavigationPanel.UserControls
                 stationType = StationType.FleetCarrier;
 
             LandingPadsImage.Source = StationTypeImageSource(stationType);
+            UpdateLayout();
 
             // resize LandingPadIcon relative to the background scale
             LandingPadIcon.Width = DesiredSize.Width * 0.08;

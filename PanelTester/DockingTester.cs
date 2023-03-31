@@ -1,6 +1,6 @@
 ﻿using EDDDLLInterfaces;
 using EDDNavigationPanel.Models;
-using Newtonsoft.Json;
+using QuickJSON;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -62,14 +62,14 @@ namespace PanelTester
 
         private EDDDLLIF.JournalEntry DockingGranted(StationType stationType, string stationName, int padNumber)
         {
-            var jsonObj = new
-            {
-                eventName = "DockingGranted",
-                StationName = stationName,
-                StationType = stationType.ToString(),
-                LandingPad = padNumber
-            };
-            var jsonString = JsonConvert.SerializeObject(jsonObj).Replace("eventName", "event");
+            var jsonString = new JObject
+                {
+                    ["event"] = "DockingGranted",
+                    ["StationName"] = stationName,
+                    ["StationType"] = stationType.ToString(),
+                    ["LandingPad"] = padNumber,
+                }
+                .ToString();
             return new EDDDLLIF.JournalEntry
             {
                 name = "Docking Granted",
@@ -82,5 +82,7 @@ namespace PanelTester
             var je = DockingGranted(StationType, "Fake Station", (int)padNumber.Value);
             ucNavigationPanel.NewUnfilteredJournal(je);
         }
+
+        private void buttonRefresh_Click(object sender, EventArgs e) => UpdateControl();
     }
 }

@@ -16,7 +16,7 @@
 
   <ItemGroup>
     <PackageReference Include="MahApps.Metro.IconPacks.Material" Version="4.11.0" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="RJKJSoft.QuickJSON" Version="1.1.0" />
   </ItemGroup>
 
   <ItemGroup>

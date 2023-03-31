@@ -1,5 +1,5 @@
 ﻿using EDDNavigationPanel.Models;
-using Newtonsoft.Json.Linq;
+using QuickJSON;
 using System;
 using System.Drawing;
 using System.Runtime.CompilerServices;
@@ -77,10 +77,10 @@ namespace EDDNavigationPanel
             {
                 if (je.name == "Docking Granted")
                 {
-                    var jData = JObject.Parse(je.json);
-                    var StationName = jData["StationName"].Value<string>();
-                    var padNumber = jData["LandingPad"].Value<int>();
-                    var stationType = (StationType)Enum.Parse(typeof(StationType), jData["StationType"].Value<string>());
+                    var jData = JToken.Parse(je.json);
+                    var StationName = jData["StationName"].Str();
+                    var padNumber = jData["LandingPad"].Int();
+                    var stationType = (StationType)Enum.Parse(typeof(StationType), jData["StationType"].Str());
                     ucLandingPads.Update(stationType, padNumber);
 
                 }

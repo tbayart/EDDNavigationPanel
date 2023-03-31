@@ -33,21 +33,22 @@
             this.padNumber = new System.Windows.Forms.NumericUpDown();
             this.stationType = new System.Windows.Forms.ComboBox();
             this.labelStationType = new System.Windows.Forms.Label();
+            this.buttonRefresh = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.padNumber)).BeginInit();
             this.SuspendLayout();
             // 
-            // ucDockingPanel
+            // ucNavigationPanel
             // 
             this.ucNavigationPanel.Location = new System.Drawing.Point(0, 60);
             this.ucNavigationPanel.Name = "ucNavigationPanel";
             this.ucNavigationPanel.Size = new System.Drawing.Size(800, 400);
             this.ucNavigationPanel.TabIndex = 0;
             // 
-            // labelPad
+            // labelPadNumber
             // 
             this.labelPadNumber.AutoSize = true;
             this.labelPadNumber.Location = new System.Drawing.Point(12, 0);
-            this.labelPadNumber.Name = "labelPadNamber";
+            this.labelPadNumber.Name = "labelPadNumber";
             this.labelPadNumber.Size = new System.Drawing.Size(66, 13);
             this.labelPadNumber.TabIndex = 1;
             this.labelPadNumber.Text = "Pad Number";
@@ -93,11 +94,22 @@
             this.labelStationType.TabIndex = 4;
             this.labelStationType.Text = "Station Type";
             // 
+            // buttonRefresh
+            // 
+            this.buttonRefresh.Location = new System.Drawing.Point(352, 16);
+            this.buttonRefresh.Name = "buttonRefresh";
+            this.buttonRefresh.Size = new System.Drawing.Size(75, 23);
+            this.buttonRefresh.TabIndex = 5;
+            this.buttonRefresh.Text = "Refresh";
+            this.buttonRefresh.UseVisualStyleBackColor = true;
+            this.buttonRefresh.Click += new System.EventHandler(this.buttonRefresh_Click);
+            // 
             // DockingTester
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(804, 461);
+            this.Controls.Add(this.buttonRefresh);
             this.Controls.Add(this.labelStationType);
             this.Controls.Add(this.stationType);
             this.Controls.Add(this.padNumber);
@@ -118,6 +130,7 @@
         private System.Windows.Forms.NumericUpDown padNumber;
         private System.Windows.Forms.ComboBox stationType;
         private System.Windows.Forms.Label labelStationType;
+        private System.Windows.Forms.Button buttonRefresh;
     }
 }
 

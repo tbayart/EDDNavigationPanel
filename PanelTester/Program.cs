@@ -13,7 +13,7 @@ namespace PanelTester
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new DockingTester());
+            Application.Run(new NavigationPanelTester());
         }
     }
 }

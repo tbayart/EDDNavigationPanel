@@ -34,6 +34,9 @@
             // 
             // elementHost
             // 
+            this.elementHost.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.elementHost.Location = new System.Drawing.Point(0, 0);
             this.elementHost.Name = "elementHost";
             this.elementHost.Size = new System.Drawing.Size(800, 400);

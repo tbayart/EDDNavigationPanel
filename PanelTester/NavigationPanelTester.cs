@@ -23,8 +23,8 @@ namespace PanelTester
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-            listView.Items.Add("DockingGranted");
-            listView.ItemSelectionChanged += ListView_ItemSelectionChanged;
+            _listView.Items.Add("DockingGranted");
+            _listView.ItemSelectionChanged += ListView_ItemSelectionChanged;
         }
 
         private void ListView_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
@@ -38,7 +38,7 @@ namespace PanelTester
             }.ToString();
 
             //tabControl.SelectedTab.Text;
-            ucNavigationPanel.NewUnfilteredJournal(new EDDDLLIF.JournalEntry { name = "Docking Granted", json = jsonString });
+            _ucNavigationPanel.NewUnfilteredJournal(new EDDDLLIF.JournalEntry { name = "Docking Granted", json = jsonString });
         }
     }
 }

@@ -28,27 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.elementHost = new System.Windows.Forms.Integration.ElementHost();
-            this.UCContentControl = new EDDNavigationPanel.UserControls.UCContentControl();
+            this._elementHost = new System.Windows.Forms.Integration.ElementHost();
+            this._ucContentControl = new EDDNavigationPanel.UserControls.UCContentControl();
             this.SuspendLayout();
             // 
-            // elementHost
+            // _elementHost
             // 
-            this.elementHost.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this._elementHost.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.elementHost.Location = new System.Drawing.Point(0, 0);
-            this.elementHost.Name = "elementHost";
-            this.elementHost.Size = new System.Drawing.Size(800, 400);
-            this.elementHost.TabIndex = 2;
-            this.elementHost.Text = "elementHost";
-            this.elementHost.Child = this.UCContentControl;
+            this._elementHost.Location = new System.Drawing.Point(0, 0);
+            this._elementHost.Name = "_elementHost";
+            this._elementHost.Size = new System.Drawing.Size(800, 400);
+            this._elementHost.TabIndex = 2;
+            this._elementHost.Text = "elementHost";
+            this._elementHost.Child = this._ucContentControl;
             // 
             // UCNavigationPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.elementHost);
+            this.Controls.Add(this._elementHost);
             this.Name = "UCNavigationPanel";
             this.Size = new System.Drawing.Size(800, 400);
             this.ResumeLayout(false);
@@ -56,7 +56,7 @@
         }
 
         #endregion
-        private System.Windows.Forms.Integration.ElementHost elementHost;
-        private UserControls.UCContentControl UCContentControl;
+        private System.Windows.Forms.Integration.ElementHost _elementHost;
+        private UserControls.UCContentControl _ucContentControl;
     }
 }

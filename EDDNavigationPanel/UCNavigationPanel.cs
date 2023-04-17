@@ -1,4 +1,5 @@
-﻿using QuickJSON;
+﻿using EDDNavigationPanel.ViewModels;
+using QuickJSON;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -21,19 +22,9 @@ namespace EDDNavigationPanel
             // prevent double resizing
             AutoScaleMode = AutoScaleMode.Inherit;
             _edEventHandlers = new EDEventHandlers();
+            ViewModelManager.RegisterViewModelSetter(vm => _ucContentControl.DataContext = vm);
         }
         #endregion ctor
-
-        #region properties
-#warning temporary
-        //public UserControls.UCLandingPads LandingPads { get => ucLandingPads; }
-
-        public object CurrentViewModel
-        {
-            get => UCContentControl.DataContext;
-            set => UCContentControl.DataContext = value;
-        }
-        #endregion properties
 
         #region IEDDPanelExtension
         public bool SupportTransparency => true;

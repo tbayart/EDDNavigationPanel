@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.elementHost = new System.Windows.Forms.Integration.ElementHost();
-            this.ucLandingPads = new EDDNavigationPanel.UserControls.UCLandingPads();
+            this.UCContentControl = new EDDNavigationPanel.UserControls.UCContentControl();
             this.SuspendLayout();
             // 
             // elementHost
@@ -40,9 +40,9 @@
             this.elementHost.Location = new System.Drawing.Point(0, 0);
             this.elementHost.Name = "elementHost";
             this.elementHost.Size = new System.Drawing.Size(800, 400);
-            this.elementHost.TabIndex = 0;
+            this.elementHost.TabIndex = 2;
             this.elementHost.Text = "elementHost";
-            this.elementHost.Child = this.ucLandingPads;
+            this.elementHost.Child = this.UCContentControl;
             // 
             // UCNavigationPanel
             // 
@@ -56,8 +56,7 @@
         }
 
         #endregion
-
         private System.Windows.Forms.Integration.ElementHost elementHost;
-        private UserControls.UCLandingPads ucLandingPads;
+        private UserControls.UCContentControl UCContentControl;
     }
 }

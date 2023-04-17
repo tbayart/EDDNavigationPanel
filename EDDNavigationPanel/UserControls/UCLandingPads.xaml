@@ -4,15 +4,44 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:iconpacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
-             xmlns:local="clr-namespace:EDDNavigationPanel.UserControls"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             xmlns:conv="clr-namespace:EDDNavigationPanel.Converters"
+             xmlns:mvvm="clr-namespace:EDDNavigationPanel.Mvvm"
+             xmlns:vm="clr-namespace:EDDNavigationPanel.ViewModels"
+             mc:Ignorable="d" d:DesignHeight="450" d:DesignWidth="800"
+             d:DataContext="{x:Static vm:LandingPadsDesignViewModel.Instance}">
+    <UserControl.Resources>
+        <conv:StationTypeToImageConverter x:Key="StationTypeToImageConverter" />
+        <conv:LandingPadInCanvasMultiConverter x:Key="LandingPadInCanvasMultiConverter" />
+        <conv:MultiplyConverter x:Key="MultiplyConverter" />
+    </UserControl.Resources>
     <Grid>
-        <Image Name="LandingPadsImage" Source="pack://application:,,,/EDDNavigationPanel;component/Resources/LandingPadsCoriolis.png" Stretch="Uniform" />
+        <Image x:Name="StationImage" Stretch="Uniform"
+            Source="{Binding StationType, Converter={StaticResource StationTypeToImageConverter}}" />
         <Canvas>
-            <iconpacks:PackIconMaterial Name="LandingPadIcon" Kind="SelectionEllipseArrowInside" Spin="True"
-                                        Foreground="Coral" Width="40" Height="40" VerticalAlignment="Center"
-                                        Visibility="Hidden" />
+            <iconpacks:PackIconMaterial Name="Spinner" Kind="SelectionEllipseArrowInside" Spin="True" SpinDuration="3"
+                Foreground="Coral" VerticalAlignment="Center" Visibility="Visible" 
+                Width="{Binding ActualWidth, ElementName=StationImage,
+                    Converter={StaticResource MultiplyConverter}, ConverterParameter={mvvm:DoubleMarkup 0.08}}"
+                Height="{Binding ActualHeight, ElementName=StationImage,
+                    Converter={StaticResource MultiplyConverter}, ConverterParameter={mvvm:DoubleMarkup 0.08}}"
+                d:Width="40" d:Height="40">
+                <Canvas.Left>
+                    <MultiBinding Converter="{StaticResource LandingPadInCanvasMultiConverter}">
+                        <Binding Path="PadLocation.X" />
+                        <Binding Path="ActualWidth" ElementName="StationImage" />
+                        <Binding Path="ActualWidth" RelativeSource="{RelativeSource FindAncestor, AncestorType=Canvas}" />
+                        <Binding Path="ActualWidth" ElementName="Spinner" />
+                    </MultiBinding>
+                </Canvas.Left>
+                <Canvas.Top>
+                    <MultiBinding Converter="{StaticResource LandingPadInCanvasMultiConverter}">
+                        <Binding Path="PadLocation.Y" />
+                        <Binding Path="ActualHeight" ElementName="StationImage" />
+                        <Binding Path="ActualHeight" RelativeSource="{RelativeSource FindAncestor, AncestorType=Canvas}" />
+                        <Binding Path="ActualHeight" ElementName="Spinner" />
+                    </MultiBinding>
+                </Canvas.Top>
+            </iconpacks:PackIconMaterial>
         </Canvas>
     </Grid>
 </UserControl>

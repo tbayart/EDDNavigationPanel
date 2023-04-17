@@ -1,4 +1,5 @@
 ﻿using EDDNavigationPanel.Models;
+using EDDNavigationPanel.ViewModels;
 using QuickJSON;
 using System;
 using System.Collections.Generic;
@@ -26,7 +27,9 @@ namespace EDDNavigationPanel
         {
             var StationName = jData["StationName"].Str();
             var stationType = (StationType)Enum.Parse(typeof(StationType), jData["StationType"].Str());
-            navPanel.LandingPads.Update(stationType, -1);
+            var viewModel = new LandingPadsViewModel();
+            navPanel.CurrentViewModel = viewModel;
+            viewModel.SelectedPad(stationType, -1);
         }
 
         private void OnDockingGrantedEvent(UCNavigationPanel navPanel, JToken jData, JournalEntry je)
@@ -34,7 +37,9 @@ namespace EDDNavigationPanel
             var StationName = jData["StationName"].Str();
             var padNumber = jData["LandingPad"].Int();
             var stationType = (StationType)Enum.Parse(typeof(StationType), jData["StationType"].Str());
-            navPanel.LandingPads.Update(stationType, padNumber);
+            var viewModel = new LandingPadsViewModel();
+            navPanel.CurrentViewModel = viewModel;
+            viewModel.SelectedPad(stationType, padNumber);
         }
 
         private void OnCommanderEvent(JToken jData, JournalEntry je)

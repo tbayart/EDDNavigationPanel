@@ -26,7 +26,13 @@ namespace EDDNavigationPanel
 
         #region properties
 #warning temporary
-        public UserControls.UCLandingPads LandingPads { get => ucLandingPads; }
+        //public UserControls.UCLandingPads LandingPads { get => ucLandingPads; }
+
+        public object CurrentViewModel
+        {
+            get => UCContentControl.DataContext;
+            set => UCContentControl.DataContext = value;
+        }
         #endregion properties
 
         #region IEDDPanelExtension

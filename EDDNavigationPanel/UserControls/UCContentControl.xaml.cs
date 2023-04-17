@@ -3,11 +3,11 @@
 namespace EDDNavigationPanel.UserControls
 {
     /// <summary>
-    /// Interaction logic for UserControl1.xaml
+    /// Interaction logic for UCContentControl.xaml
     /// </summary>
-    public partial class UCLandingPads : UserControl
+    public partial class UCContentControl : UserControl
     {
-        public UCLandingPads()
+        public UCContentControl()
         {
             InitializeComponent();
         }

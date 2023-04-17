@@ -1,10 +1,20 @@
-﻿using System.Drawing;
+﻿using EDDNavigationPanel.Models;
+using System;
+using System.Drawing;
 using System.IO;
+using System.Windows;
 
 namespace EDDNavigationPanel
 {
     public static class ResourcesManager
     {
+        private readonly static Lazy<LandingPadsCoords> _landingPadsCoords;
+
+        static ResourcesManager()
+        {
+            _landingPadsCoords = new Lazy<LandingPadsCoords>();
+        }
+
         public static Image PanelIcon
         {
             get
@@ -12,6 +22,11 @@ namespace EDDNavigationPanel
                 using var stream = GetResourceStream("PanelIcon.png");
                 return Image.FromStream(stream);
             }
+        }
+
+        public static Vector GetCoords(this StationType stationType, int padNumber)
+        {
+            return _landingPadsCoords.Value.Get(stationType, padNumber);
         }
 
         public static byte[] GetResourceData(string resourceName)

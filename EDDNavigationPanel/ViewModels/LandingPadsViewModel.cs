@@ -7,6 +7,18 @@ namespace EDDNavigationPanel.ViewModels
 {
     internal class LandingPadsViewModel : ViewModelBase
     {
+#if DEBUG
+        public static object DesignInstance
+        {
+            get
+            {
+                var instance = new LandingPadsViewModel();
+                instance.SelectedPad(StationType.CraterOutpost, 3);
+                return instance;
+            }
+        }
+#endif //DEBUG
+
         public StationType StationType
         {
             get => _stationType;
@@ -14,7 +26,12 @@ namespace EDDNavigationPanel.ViewModels
         }
         private StationType _stationType;
 
-        public int PadNumber { get; private set; }
+        public int PadNumber
+        {
+            get => _padNumber;
+            private set => SetAndNotify(ref _padNumber, value);
+        }
+        private int _padNumber;
 
         public Vector PadLocation
         {
@@ -23,20 +40,11 @@ namespace EDDNavigationPanel.ViewModels
         }
         private Vector _padLocation;
 
-        public void SelectedPad(StationType stationType,int padNumber)
+        public void SelectedPad(StationType stationType, int padNumber)
         {
             StationType = stationType;
+            PadNumber = padNumber;
             PadLocation = stationType.GetCoords(padNumber);
-        }
-    }
-
-    internal class LandingPadsDesignViewModel: LandingPadsViewModel
-    {
-        public static object Instance => new LandingPadsDesignViewModel();
-
-        public LandingPadsDesignViewModel()
-        {
-            SelectedPad(StationType.CraterOutpost, 3);
         }
     }
 }

@@ -11,6 +11,7 @@ namespace EDDNavigationPanel
     public class EDEventHandlers
     {
         private delegate void EDEventHandler(UCNavigationPanel navPanel, JToken jData, JournalEntry journalEntry);
+        private readonly EDEventHandler _unhandledEvent = (a, b, c) => { };
         private readonly MemoryCache _caching;
 
         #region ctor
@@ -58,7 +59,7 @@ namespace EDDNavigationPanel
             {
                 var method = GetType().GetMethod(handlerName, BindingFlags.NonPublic | BindingFlags.Instance);
                 handler = method?.CreateDelegate(typeof(EDEventHandler), this) as EDEventHandler;
-                _caching[handlerName] = handler;
+                _caching[handlerName] = handler ?? _unhandledEvent;
             }
             return handler;
         }

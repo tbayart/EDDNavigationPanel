@@ -12,13 +12,7 @@ namespace EDDNavigationPanel.Converters
             if (value is not StationType)
                 return Binding.DoNothing;
 
-            var stationType = (StationType)value;
-            if (stationType == StationType.Ocellus || stationType == StationType.Orbis || stationType == StationType.AsteroidBase)
-                stationType = StationType.Coriolis;
-            else if (stationType == StationType.MegaShip)
-                stationType = StationType.FleetCarrier;
-
-            return new Uri($"pack://application:,,,/EDDNavigationPanel;component/Resources/LandingPads{stationType}.png");
+            return new Uri($"pack://application:,,,/EDDNavigationPanel;component/Resources/LandingPads{value}.png");
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

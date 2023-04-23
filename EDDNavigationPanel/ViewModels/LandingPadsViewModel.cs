@@ -42,6 +42,11 @@ namespace EDDNavigationPanel.ViewModels
 
         public void SelectedPad(StationType stationType, int padNumber)
         {
+            if (stationType == StationType.Ocellus || stationType == StationType.Orbis || stationType == StationType.AsteroidBase)
+                stationType = StationType.Coriolis;
+            else if (stationType == StationType.MegaShip)
+                stationType = StationType.FleetCarrier;
+
             StationType = stationType;
             PadNumber = padNumber;
             PadLocation = stationType.GetCoords(padNumber);

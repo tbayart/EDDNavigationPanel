@@ -33,8 +33,9 @@ namespace PanelTester
             {
                 ["event"] = "DockingGranted",
                 ["StationName"] = "station name",
-                ["StationType"] = StationType.FleetCarrier.ToString(),
-                ["LandingPad"] = new Random().Next(1, 16),
+                ["StationType"] = StationType.Orbis.ToString(),
+                ["LandingPad"] = new Random().Next(1, 45),
+                //["LandingPad"] = new Random().Next(1, 16),
             }.ToString();
 
             //tabControl.SelectedTab.Text;
